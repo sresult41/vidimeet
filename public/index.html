@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vidimeet - Random Video Chat</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">Vidimeet</h1>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="video-container" id="videoContainer">
+                <div class="local-video-wrapper">
+                    <video id="localVideo" autoplay muted></video>
+                    <div class="video-label">You</div>
+                </div>
+                <div class="remote-video-wrapper">
+                    <video id="remoteVideo" autoplay></video>
+                    <div class="video-label" id="remoteLabel">Waiting for stranger...</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="startChatBtn" class="btn btn-primary">Start Chat</button>
+                <button id="nextBtn" class="btn btn-secondary" disabled>Next Stranger</button>
+                <button id="toggleVideoBtn" class="btn btn-icon" title="Toggle Video">
+                    <span class="icon">🎥</span>
+                </button>
+                <button id="toggleAudioBtn" class="btn btn-icon" title="Toggle Audio">
+                    <span class="icon">🔊</span>
+                </button>
+                <button id="reportBtn" class="btn btn-danger" disabled>Report</button>
+            </div>
+
+            <div class="text-chat" id="textChat">
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type a message..." disabled />
+                    <button id="sendBtn" disabled>Send</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Vidimeet. Connect with random people safely.</p>
+        </footer>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Finding someone to chat with...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
